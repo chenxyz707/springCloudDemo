@@ -1,0 +1,90 @@
+info:
+  name: Eureka Server
+
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+server:
+  port: 8761
+eureka:
+  client:
+    #是否注册到EurekaServer
+    register-with-eureka: true
+    #是否拉取信息
+    fetch-registry: false
+    #eureka server地址
+    service-url:
+      #必须使用8761端口（server.port也一样），否则eureka不能注册自己本身
+      default-zone: http://127.0.0.1:8761/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    #关闭自我保护，不管如何都要剔除心跳检测异常的服务
+    enable-self-preservation: true
+    peer-eureka-nodes-update-interval-ms: 1800000
+  instance:
+    hostname: eureka
+
+---
+spring:
+  profiles: eureka1
+server:
+  port: 8761
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
+      #defaultZone: http://127.0.0.1:8761/eureka/,http://127.0.0.1:8762/eureka/,http://127.0.0.1:8763/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    hostname: eureka1
+    #hostname: 127.0.0.1:8761
+    metadataMap:
+      instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
+---
+spring:
+  profiles: eureka2
+server:
+  port: 8762
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
+      #defaultZone: http://127.0.0.1:8761/eureka/,http://127.0.0.1:8762/eureka/,http://127.0.0.1:8763/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    hostname: eureka2
+    #hostname: 127.0.0.1:8762
+    metadataMap:
+      instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
+
+---
+spring:
+  profiles: eureka3
+server:
+  port: 8763
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
+      #defaultZone: http://127.0.0.1:8761/eureka/,http://127.0.0.1:8762/eureka/,http://127.0.0.1:8763/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    hostname: eureka3
+    #hostname: 127.0.0.1:8763
+    metadataMap:
+      instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}

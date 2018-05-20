@@ -1,0 +1,17 @@
+info:
+  name: Web service
+
+server:
+  port: 8101
+
+#eureka配置
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://eureka1:8761/eureka/
+  instance:
+    #心跳间隔
+    lease-renewal-interval-in-seconds: 30
+
