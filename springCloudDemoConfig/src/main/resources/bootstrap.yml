@@ -10,11 +10,26 @@ spring:
         native:
           #用本地文件夹存储配置
           search-locations: file:e:\\springcloud\\config
+        encrypt:
+          enabled: true
         #git仓库 gitlab地址
         git:
           uri: http://172.16.4.105:10800/root/springCloudConfig.git
           search-paths: /
-          username: chenxyz
+          username: root
           password: 123
           repos:
+            #不同环境的不同配置仓库
+            sms-serivce-production:
+              pattern: '*/production'
+              uri: http://172.16.4.105:10800/root/sms-serivce-production.git
+            #不同项目不同库
+            web-app-service:
+              pattern:
+                - web-app-service/**
+                - web-app-service*
+              uri: file:e:\\springcloud\\config\\web-app-server
+
+
+
 

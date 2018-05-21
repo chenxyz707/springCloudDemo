@@ -33,6 +33,12 @@
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
 
+
+        <!-- spring-boot-starter-security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
         <!--spring cloud 配置中心-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

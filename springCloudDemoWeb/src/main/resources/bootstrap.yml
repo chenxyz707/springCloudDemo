@@ -1,3 +1,18 @@
 spring:
   application:
     name: web-app-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        #配置中心的服务id
+        service-id: config-server
+      username: chenxyz
+      password: 123
+      #配置中心会覆盖本地配置
+      override-none: false
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      #git仓库中，可以使用label来做不同版本的配置管理
+      #label: '1.0'

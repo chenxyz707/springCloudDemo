@@ -4,6 +4,7 @@ info:
 server:
   port: 8200
 
+
 #rabbitmq的地址、用户名和密码
 spring:
   rabbitmq:
@@ -12,6 +13,21 @@ spring:
     password: guest
   profiles:
     active: dev
+
+#使得/refresh不需要权限验证
+management:
+  security:
+    enabled: false
+#访问时需要提供用户名和密码
+security:
+  #/monitor接口用于接收git刷新通知，不需要用户名密码校验
+  ignored: /monitor
+  user:
+    name: chenxyz
+    password: 123
+encrypt:
+  #秘钥
+  key: 123
 
 # 不同环境的配置
 ---
@@ -27,7 +43,7 @@ eureka:
     preferIpAddress: true
 ---
 spring:
-  profiles: prod
+  profiles: production
 eureka:
   client:
     registerWithEureka: true

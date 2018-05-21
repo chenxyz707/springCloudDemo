@@ -1,5 +1,5 @@
 info:
-  name: Web service
+  name: Web App Service
 
 server:
   port: 8101

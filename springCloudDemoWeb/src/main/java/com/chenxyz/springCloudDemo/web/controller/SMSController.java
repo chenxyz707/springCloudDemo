@@ -1,6 +1,7 @@
 package com.chenxyz.springCloudDemo.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class SMSController {
 
     @Autowired
     RestTemplate restTemplate;
+
+    @Value("${sms.template}")
+    private String smsTemplate;
 
     public static final String SMS_INSTANCE = "sms-service";
     public static final String SMS_PATH = "/sms";
