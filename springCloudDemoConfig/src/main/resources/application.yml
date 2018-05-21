@@ -1,0 +1,39 @@
+info:
+  name: Config Server
+
+server:
+  port: 8200
+
+#rabbitmq的地址、用户名和密码
+spring:
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+  profiles:
+    active: dev
+
+# 不同环境的配置
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    preferIpAddress: true
+---
+spring:
+  profiles: prod
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
+  instance:
+    preferIpAddress: true
+

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: dev,git
+  cloud:
+    config:
+      server:
+        #本地文件
+        native:
+          #用本地文件夹存储配置
+          search-locations: file:e:\\springcloud\\config
+        #git仓库 gitlab地址
+        git:
+          uri: http://172.16.4.105:10800/root/springCloudConfig.git
+          search-paths: /
+          username: chenxyz
+          password: 123
+          repos:
+
