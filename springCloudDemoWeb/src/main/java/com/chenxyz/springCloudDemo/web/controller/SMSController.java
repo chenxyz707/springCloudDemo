@@ -46,4 +46,10 @@ public class SMSController {
 
         return restTemplate.getForObject(url, String.class);
     }
+
+    @RequestMapping("getSMSTemplate")
+    @ResponseBody
+    public String getSMSTemplate() {
+        return smsTemplate;
+    }
 }

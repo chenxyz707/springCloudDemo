@@ -4,6 +4,13 @@ info:
 server:
   port: 8101
 
+spring:
+  profiles:
+    active: production
+
+---
+spring:
+  profiles: dev
 #eureka配置
 eureka:
   client:
@@ -14,4 +21,16 @@ eureka:
   instance:
     #心跳间隔
     lease-renewal-interval-in-seconds: 30
-
+---
+spring:
+  profiles: production
+#eureka配置
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://eureka1:8761/eureka/,http://eureka1:8762/eureka/,http://eureka3:8761/eureka/
+  instance:
+    #心跳间隔
+    lease-renewal-interval-in-seconds: 30

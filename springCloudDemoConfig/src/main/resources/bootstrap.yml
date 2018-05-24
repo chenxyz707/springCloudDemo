@@ -17,7 +17,7 @@ spring:
           uri: http://172.16.4.105:10800/root/springCloudConfig.git
           search-paths: /
           username: root
-          password: 123
+          password: 123456789
           repos:
             #不同环境的不同配置仓库
             sms-serivce-production:
@@ -28,7 +28,7 @@ spring:
               pattern:
                 - web-app-service/**
                 - web-app-service*
-              uri: file:e:\\springcloud\\config\\web-app-server
+              uri: file:e:\\springcloud\\config
 
 
 
