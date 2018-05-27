@@ -1,11 +1,14 @@
 package com.chenxyz.springCloudDemo.web.controller;
 
+import com.chenxyz.springCloudDemo.web.entity.SMSEntity;
+import com.chenxyz.springCloudDemo.web.service.commonFeign.CommonSMSFeignService;
+import com.chenxyz.springCloudDemo.web.service.sms.SMSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -21,10 +24,10 @@ import java.util.List;
 public class SMSController {
 
     @Autowired
-    DiscoveryClient discoveryClient;
+    SMSService smsService;
 
     @Autowired
-    RestTemplate restTemplate;
+    CommonSMSFeignService commonSMSFeignService;
 
     @Value("${sms.template}")
     private String smsTemplate;
@@ -34,19 +37,32 @@ public class SMSController {
 
     @RequestMapping("send")
     @ResponseBody
-    public String send() {
-        List<ServiceInstance> instances = discoveryClient.getInstances(SMS_INSTANCE);
-        return null;
+    public String send(@RequestBody SMSEntity entity) {
+        return smsService.add(entity);
     }
 
     @RequestMapping("getSMSById")
     @ResponseBody
-    public String getSMSById(String id) {
-        List<ServiceInstance> instances = discoveryClient.getInstances(SMS_INSTANCE);
-        ServiceInstance instance = instances.get(0);
-        String url = "http://"+instance.getHost()+":"+instance.getPort()+SMS_PATH+"/"+id;
+    public SMSEntity getSMSById(String id) {
+        return smsService.getById(id);
+    }
 
-        return restTemplate.getForObject(url, String.class);
+    @RequestMapping("queryAll")
+    @ResponseBody
+    public String queryAll() {
+        return smsService.queryAll();
+    }
+
+    @RequestMapping("update")
+    @ResponseBody
+    public String update(@RequestBody SMSEntity entity) {
+        return commonSMSFeignService.updateSms(entity.getId(), entity);
+    }
+
+    @RequestMapping("delete")
+    @ResponseBody
+    public String delete(long id) {
+        return commonSMSFeignService.delete(id);
     }
 
     @RequestMapping("getSMSTemplate")
