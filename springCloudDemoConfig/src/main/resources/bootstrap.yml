@@ -2,6 +2,7 @@ spring:
   application:
     name: config-server
   profiles:
+    #active: dev,native
     active: dev,git
   cloud:
     config:
@@ -9,12 +10,13 @@ spring:
         #本地文件
         native:
           #用本地文件夹存储配置
-          search-locations: file:e:\\springcloud\\config
+          search-locations: file:d:\\springcloud\\config
         encrypt:
           enabled: true
         #git仓库 gitlab地址
         git:
           uri: http://172.16.4.105:10800/root/springCloudConfig.git
+          #git项目可能有多个目录，但是配置文件可能会在某一目录下，可以指定目录
           search-paths: /
           username: root
           password: 123456789
@@ -28,8 +30,4 @@ spring:
               pattern:
                 - web-app-service/**
                 - web-app-service*
-              uri: file:e:\\springcloud\\config
-
-
-
-
+              uri: file:d:\\springcloud\\config

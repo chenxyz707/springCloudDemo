@@ -1,12 +1,6 @@
-info:
-  name: Web App Service
-
-server:
-  port: 8101
-
 spring:
   profiles:
-    active: production
+    active: dev
 
 ---
 spring:

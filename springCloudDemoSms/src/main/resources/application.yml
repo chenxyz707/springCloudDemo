@@ -4,6 +4,13 @@ info:
 server:
   port: 8001
 
+sms:
+  registerMsg: 您的注册码为{code}
+
+spring:
+  profiles:
+    active: dev
+
 #eureka配置
 eureka:
   client:
