@@ -1,0 +1,22 @@
+info:
+  name: Web App Service
+
+server:
+  port: 8101
+
+#调用refresh的时候不校验权限
+management:
+  security:
+    enabled: false
+
+spring:
+  profiles:
+    active: dev
+  rabbitmq:
+      host: 172.16.4.39
+      username: rabbitmq
+      password: rabbitmq
+      
+sms:
+  template: '{user_name},感谢您参与我们的活动。恭喜您已获得我们的一等奖！奖品将在三个工作日之内发放'
+  

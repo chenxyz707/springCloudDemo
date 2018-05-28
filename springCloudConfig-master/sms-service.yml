@@ -1,0 +1,21 @@
+info:
+  name: SMS service
+
+#调用refresh的时候不校验权限
+management:
+  security:
+    enabled: false
+
+spring:
+  profiles:
+    active: dev
+  rabbitmq:
+      host: 172.16.4.39
+      username: rabbitmq
+      password: rabbitmq
+
+server:
+  port: 8001
+
+sms:
+  registerMsg: 您的注册码为{code},此验证码一分钟内有效,如果不是本人操作请忽略。

@@ -31,3 +31,7 @@ spring:
                 - web-app-service/**
                 - web-app-service*
               uri: file:d:\\springcloud\\config
+
+encrypt:
+  #秘钥
+  key: 123

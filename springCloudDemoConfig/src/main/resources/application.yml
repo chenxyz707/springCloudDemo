@@ -25,9 +25,11 @@ security:
   user:
     name: chenxyz
     password: 123
-encrypt:
-  #秘钥
-  key: 123
+
+#经过一番踩坑，encrypt.key必须写在bootstrap文件里面才能生效
+#encrypt:
+#  #秘钥
+#  key: 123
 
 # 不同环境的配置
 ---
