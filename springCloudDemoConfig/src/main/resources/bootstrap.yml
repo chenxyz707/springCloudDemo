@@ -32,6 +32,7 @@ spring:
                 - web-app-service*
               uri: file:d:\\springcloud\\config
 
+#encrypt.key必须写在bootstrap文件里面才能生效
 encrypt:
   #秘钥
   key: 123
