@@ -8,8 +8,9 @@ import feign.RequestLine;
 import org.springframework.cloud.netflix.feign.FeignClient;
 
 /**
- * 这个是一个普通的Feign客户端，
- * 使用这种方法可以直接调用未在统一Eureka(集群)中注册的应用或者外部接口
+ * 这是一个普通的Feign客户端，
+ * 使用这种方法可以直接调用未在同一Eureka(集群)中注册的应用或者外部接口
+ * 这里使用了原生的Feign注解@RequestLine
  * Created by chenxyz on 2018/5/27.
  */
 @FeignClient(name = "sms-service-common-feign", url = "http://localhost:8001", configuration = CommonFeignConfig.class)
