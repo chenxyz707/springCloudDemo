@@ -1,9 +1,6 @@
 info:
   name: SMS service
 
-server:
-  port: 8001
-
 sms:
   registerMsg: 您的注册码为{code}
 
@@ -21,4 +18,15 @@ eureka:
   instance:
     #心跳间隔
     lease-renewal-interval-in-seconds: 30
+
+---
+spring:
+  profiles: dev
+server:
+  port: 8001
+---
+spring:
+  profiles: prod
+server:
+  port: 9001
 

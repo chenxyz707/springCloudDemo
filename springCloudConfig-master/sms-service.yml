@@ -12,11 +12,18 @@ spring:
   rabbitmq:
       host: 172.16.4.39
       username: rabbitmq
-      #password: rabbitmq
-      password: '{cipher}c0b6a30bcea3bdd48c8bb3459fae9dc7119943f96ee5233ea2fe5cfeb1ad4fa3'
-
-server:
-  port: 8001
+      password: rabbitmq
 
 sms:
   registerMsg: 您的注册码为{code},此验证码一分钟内有效,如果不是本人操作请忽略。
+
+---
+spring:
+  profiles: dev
+server:
+  port: 8001
+---
+spring:
+  profiles: prod
+server:
+  port: 9001

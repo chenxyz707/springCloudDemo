@@ -2,8 +2,8 @@ spring:
   application:
     name: config-server
   profiles:
-    #active: dev,native
-    active: dev,git
+    active: dev,native
+    #active: dev,git
   cloud:
     config:
       server:

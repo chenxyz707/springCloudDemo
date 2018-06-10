@@ -15,8 +15,7 @@ spring:
   rabbitmq:
       host: 172.16.4.39
       username: rabbitmq
-      #password: rabbitmq
-      password: '{cipher}c0b6a30bcea3bdd48c8bb3459fae9dc7119943f96ee5233ea2fe5cfeb1ad4fa3'
+      password: rabbitmq
       
 sms:
   template: '{user_name},感谢您参与我们的活动。恭喜您已获得我们的一等奖！奖品将在三个工作日之内发放'
