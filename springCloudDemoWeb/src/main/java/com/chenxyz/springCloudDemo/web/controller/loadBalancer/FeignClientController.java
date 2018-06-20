@@ -1,9 +1,9 @@
 package com.chenxyz.springCloudDemo.web.controller.loadBalancer;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,22 +14,45 @@ import org.springframework.web.bind.annotation.RestController;
 public class FeignClientController {
 
     @Autowired
-    LoadBalancerClient client;
+    EurekaFeignClent eurekaFeignClent;
+
+    @Autowired
+    AnnotationFeignClient annotationFeignClient;
+
+    @Autowired
+    PropertiesFeignClient propertiesFeignClient;
 
     @RequestMapping("/eureka/querySMS")
     public String eurekas() {
-        ServiceInstance serviceInstance = client.choose("sms-service");
-        serviceInstance.getUri();
-        return "";
+        return eurekaFeignClent.queryAll();
     }
 
     @RequestMapping("/annotation/querySMS")
     public String annotation() {
-        return null;
+        return annotationFeignClient.queryAll();
     }
 
     @RequestMapping("/properties/querySMS")
     public String properties() {
-        return null;
+        return propertiesFeignClient.queryAll();
     }
+
+}
+
+@FeignClient(name = "sms-service")
+interface EurekaFeignClent {
+    @RequestMapping(value="/sms", method = RequestMethod.GET)
+    public String queryAll();
+}
+
+@FeignClient(name = "annotation-sms-service")
+interface AnnotationFeignClient {
+    @RequestMapping(value="/sms", method = RequestMethod.GET)
+    public String queryAll();
+}
+
+@FeignClient(name = "properties-sms-service")
+interface PropertiesFeignClient {
+    @RequestMapping(value="/sms", method = RequestMethod.GET)
+    public String queryAll();
 }
