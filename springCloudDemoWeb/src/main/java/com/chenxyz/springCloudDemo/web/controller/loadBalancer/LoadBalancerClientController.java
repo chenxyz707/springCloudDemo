@@ -35,6 +35,7 @@ public class LoadBalancerClientController {
         return restTemplate.getForObject(resolve, String.class);
     }
 
+    /*Error creating bean with name 'retryableRibbonLoadBalancingHttpClient' defined in org.springframework.cloud.netflix.ribbon.apache.HttpClientRibbonConfiguration: Unsatisfied dependency expressed through method 'retryableRibbonLoadBalancingHttpClient' parameter 2; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ribbonLoadBalancer' defined in org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.netflix.loadbalancer.ILoadBalancer]: Factory method 'ribbonLoadBalancer' threw exception; nested exception is java.lang.NullPointerException*/
     @RequestMapping("/annotation/querySMS")
     public String annotation() {
         ServiceInstance serviceInstance = client.choose("annotation-sms-service");
