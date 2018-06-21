@@ -1,3 +1,4 @@
+
 info:
   name: Web App Service
 
@@ -13,10 +14,76 @@ spring:
   profiles:
     active: dev
   rabbitmq:
-      host: 172.16.4.39
-      username: rabbitmq
-      password: rabbitmq
-      
+        host: 172.16.4.39
+        username: rabbitmq
+        password: rabbitmq
+  cloud:
+      loadbalancer:
+        # 开启重试
+        retry:
+          enabled: true
+
+# 关闭熔断机制
+feign:
+  hystrix:
+    enabled: false
+
+ribbon:
+  # 开启eureka与ribbon的集成
+  eureka:
+    enabled: true
+  # 暂不开启熔断机制
+  hystrix:
+    enabled: false
+  # 配置ribbon默认的超时时间
+  ConnectTimeout: 2000
+  ReadTimeout: 2000
+  # 是否开启重试
+  OkToRetryOnAllOperations: true
+  # 重试的时候实例切换次数
+  MaxAutoRetriesNextServer: 3
+  # 当前实例重试次数
+  MaxAutoRetries: 2
+
+# 定义一个针对service-by-properties服务的负载均衡器。服务实例信息来自配置文件
+# 服务名
+properties-sms-service:
+  # 服务实例列表
+  listOfServers: http://localhost:8001,http://localhost:9001
+  # 这个负载均衡器不做重试
+  MaxAutoRetriesNextServer: 0
+  MaxAutoRetries: 0
+  ribbon:
+    # 负载策略
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    # 设置它的服务实例信息来自配置文件, 如果不设置NIWSServerListClassName就会去euereka里面找
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+
 sms:
   template: '{user_name},感谢您参与我们的活动。恭喜您已获得我们的一等奖！奖品将在三个工作日之内发放'
-  
+---
+spring:
+  profiles: dev
+#eureka配置
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://eureka1:8761/eureka/
+  instance:
+    #心跳间隔
+    lease-renewal-interval-in-seconds: 30
+---
+spring:
+  profiles: prod
+#eureka配置
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://eureka1:8761/eureka/,http://eureka1:8762/eureka/,http://eureka3:8761/eureka/
+  instance:
+    #心跳间隔
+    lease-renewal-interval-in-seconds: 30

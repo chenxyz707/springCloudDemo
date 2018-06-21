@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateController {
 
 
-    @Bean("lbRestTemplate")
+    @Bean
     @Qualifier("lbRestTemplate")
     @LoadBalanced
     RestTemplate RestTemplate() {
