@@ -4,7 +4,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Description
+ * 声明一个客户端
  *
  * @author chenxyz
  * @version 1.0

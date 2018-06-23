@@ -9,7 +9,7 @@ import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.ServerList;
 
 /**
- * 注解形式的RibbonClient配置
+ * 直接使用API的RibbonClient配置
  *
  * @author chenxyz
  * @version 1.0
@@ -30,7 +30,7 @@ public class AnnotationRibbonClientCofiguration {
     public IRule initRule() {
         // 轮询
         //new RoundRobinRule();
-        
+
         // 选择一个最小的并发请求的server
         //new BestAvailableRule();
 

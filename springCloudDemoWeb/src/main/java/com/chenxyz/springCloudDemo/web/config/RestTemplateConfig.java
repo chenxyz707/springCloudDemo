@@ -1,5 +1,6 @@
 package com.chenxyz.springCloudDemo.web.config;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -23,5 +24,14 @@ public class RestTemplateConfig {
         factory.setReadTimeout(5000);//单位为ms
         factory.setConnectTimeout(5000);//单位为ms
         return factory;
+    }
+
+    @Bean(name="lbRestTemplate")
+    @LoadBalanced
+    RestTemplate lbRestTemplate() {
+        SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
+        simpleClientHttpRequestFactory.setReadTimeout(2000);
+        simpleClientHttpRequestFactory.setConnectTimeout(2000);
+        return new RestTemplate(simpleClientHttpRequestFactory);
     }
 }

@@ -2,10 +2,6 @@ package com.chenxyz.springCloudDemo.web.controller.loadBalancer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -15,19 +11,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @RestController
 @RequestMapping("/loadBalancer/restTemplate")
-@Configuration
 public class RestTemplateController {
-
-
-    @Bean
-    @Qualifier("lbRestTemplate")
-    @LoadBalanced
-    RestTemplate RestTemplate() {
-        SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
-        simpleClientHttpRequestFactory.setReadTimeout(2000);
-        simpleClientHttpRequestFactory.setConnectTimeout(2000);
-        return new RestTemplate(simpleClientHttpRequestFactory);
-    }
 
     @Autowired
     @Qualifier("lbRestTemplate")

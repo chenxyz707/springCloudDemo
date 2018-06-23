@@ -42,21 +42,21 @@ ribbon:
   OkToRetryOnAllOperations: true
   # 重试的时候实例切换次数
   MaxAutoRetriesNextServer: 3
-  # 当前实例重试次数
+  # 每个实例重试次数
   MaxAutoRetries: 2
 
-# 定义一个针对service-by-properties服务的负载均衡器。服务实例信息来自配置文件
+# 定义一个properties-sms-service服务的负载均衡器。服务实例信息来自配置文件
 # 服务名
 properties-sms-service:
-  # 服务实例列表
-  listOfServers: http://localhost:8001,http://localhost:9001
-  # 这个负载均衡器不做重试
-  MaxAutoRetriesNextServer: 0
-  MaxAutoRetries: 0
   ribbon:
-    # 负载策略
+    # 服务实例列表
+    listOfServers: http://localhost:8001,http://localhost:9001
+    # 这个负载均衡器不做重试
+    MaxAutoRetriesNextServer: 0
+    MaxAutoRetries: 0
+    # 负载策略-轮询
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
-    # 设置它的服务实例信息来自配置文件, 如果不设置NIWSServerListClassName就会去euereka里面找
+    # 设置它的服务实例信息来自配置文件, 如果不设置NIWSServerListClassName就会去Euereka里面找
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
 
 sms:
