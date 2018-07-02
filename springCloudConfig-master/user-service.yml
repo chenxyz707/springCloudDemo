@@ -1,0 +1,38 @@
+info:
+  name: User service
+
+#调用refresh的时候不校验权限
+management:
+  security:
+    enabled: false
+
+spring:
+  profiles:
+    active: dev
+  rabbitmq:
+      host: 172.16.4.39
+      username: rabbitmq
+      password: rabbitmq
+
+#eureka配置
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://eureka1:8761/eureka/
+  instance:
+    #心跳间隔
+    lease-renewal-interval-in-seconds: 30
+
+---
+spring:
+  profiles: dev
+server:
+  port: 8002
+---
+spring:
+  profiles: prod
+server:
+  port: 9002
+
