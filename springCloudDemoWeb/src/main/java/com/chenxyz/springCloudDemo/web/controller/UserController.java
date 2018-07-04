@@ -1,15 +1,12 @@
 package com.chenxyz.springCloudDemo.web.controller;
 
-import com.chenxyz.springCloudDemo.web.command.UserCommand;
+import com.chenxyz.springCloudDemo.web.command.UserExceptionCommand;
+import com.chenxyz.springCloudDemo.web.command.UserAnnotationCommand;
+import com.chenxyz.springCloudDemo.web.command.UserTimeOutCommand;
+import com.chenxyz.springCloudDemo.web.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 /**
  * Created by chenxyz on 2018/5/20.
@@ -18,9 +15,39 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping("/timeout")
-    public String timeout() {
-        //This instance can only be executed once. Please instantiate a new instance.
-        return new UserCommand().execute();
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    UserAnnotationCommand userAnnotationCommand;
+
+    @RequestMapping("/command/timeout")
+    public String commandTimeout() {
+        return new UserTimeOutCommand().execute();
+    }
+
+    @RequestMapping("/command/exception")
+    public String commandException() {
+        return new UserExceptionCommand().execute();
+    }
+
+    @RequestMapping("/command/annotation/timeout")
+    public String commandAnnotationTimeout() {
+        return userAnnotationCommand.timeout();
+    }
+
+    @RequestMapping("/command/annotation/exception")
+    public String commandAnnotationException() {
+        return userAnnotationCommand.exception();
+    }
+
+    @RequestMapping("/feign/timeout")
+    public String feignTimeout() {
+        return userService.timeout();
+    }
+
+    @RequestMapping("/feign/exception")
+    public String feignException() {
+        return userService.exception();
     }
 }

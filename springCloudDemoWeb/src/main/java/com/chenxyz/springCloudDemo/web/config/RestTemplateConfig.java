@@ -30,8 +30,8 @@ public class RestTemplateConfig {
     @LoadBalanced
     RestTemplate lbRestTemplate() {
         SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
-        simpleClientHttpRequestFactory.setReadTimeout(2000);
-        simpleClientHttpRequestFactory.setConnectTimeout(2000);
+        simpleClientHttpRequestFactory.setReadTimeout(20000);
+        simpleClientHttpRequestFactory.setConnectTimeout(20000);
         return new RestTemplate(simpleClientHttpRequestFactory);
     }
 }
