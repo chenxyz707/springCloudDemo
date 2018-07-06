@@ -116,7 +116,7 @@ hystrix:
         enabled: true
         forceOpen: false
         forceClosed: false
-        requestVolumeThreshold: 3
+        requestVolumeThreshold: 4
         errorThresholdPercentage: 50
         sleepWindowInMilliseconds: 10000
       metrics:

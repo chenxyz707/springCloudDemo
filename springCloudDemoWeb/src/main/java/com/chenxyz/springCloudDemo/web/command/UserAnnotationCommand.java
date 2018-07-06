@@ -10,10 +10,8 @@ import org.springframework.web.client.RestTemplate;
 /**
  * 使用HystrixCommand注解配置一个Hystrix
  *
- * @author chenlinchao
  * @version 1.0
  * @date 2018-07-04
- * Copyright 青海粮食云项目组
  */
 @Component
 public class UserAnnotationCommand {

@@ -13,7 +13,6 @@ import java.net.URL;
  * @author chenxyz
  * @version 1.0
  * @date 2018-07-04
- * Copyright 青海粮食云项目组
  */
 public class UserExceptionCommand extends HystrixCommand<String> {
 
