@@ -29,7 +29,7 @@ docker run -d -p 1443:443 -p 10800:80 --name gitlab --restart always gitlab/gitl
 如果加密失败可以参考我的博客https://blog.csdn.net/chenxyz707/article/details/80487733 。
 ## Hystrix
 ### 配置文件
-`config.properties`和`application.yml`的中Hystrix的配置项共同生效，且`application.yml`优先级高。
+`config.properties`和`application.yml`中的Hystrix的配置项共同生效，且`application.yml`优先级高。
 
 ## 其他
 
