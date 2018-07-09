@@ -14,9 +14,9 @@ spring:
   profiles:
     active: dev
   rabbitmq:
-        host: 172.16.4.39
-        username: rabbitmq
-        password: rabbitmq
+    host: 172.16.4.39
+    username: rabbitmq
+    password: rabbitmq
   cloud:
       loadbalancer:
         # 开启重试
