@@ -16,7 +16,5 @@ eureka:
     lease-renewal-interval-in-seconds: 30
 
 turbine:
-#  aggregator:
-#    cluster-config: CLUSTER
   app-config: web-app-service,sms-service
   cluster-name-expression: "'default'"
