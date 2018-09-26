@@ -17,6 +17,15 @@
     <version>1.5.13.RELEASE</version>
   </parent>
 
+  <modules>
+    <module>springCloudDemoEureka</module>
+    <module>springCloudDemoConfig</module>
+    <module>springCloudDemoSms</module>
+    <module>springCloudDemoUser</module>
+    <module>springCloudDemoWeb</module>
+    <module>springCloudDemoDashboard</module>
+  </modules>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
