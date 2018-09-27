@@ -1,0 +1,89 @@
+
+info:
+  name: Zuul Service
+
+server:
+  port: 8301
+
+#不设置为false，就不能调用/routes获取路由表
+management:
+  security:
+    enabled: false
+
+zuul:
+  # hystrix 隔离策略，默认信号量(因为zuul中大量用到线程变量)。优先级要高过在hystrix中配置；
+  ribbonIsolationStrategy: SEMAPHORE
+  semaphore:
+    # 信号量模式下，最大并发量。优先级要高过在hystrix中配置；
+    maxSemaphores: 100
+  host:
+    #代理普通http请求的超时时间
+    socket-timeout-millis: 2000
+    connect-timeout-millis: 1000
+    max-total-connections: 2000
+    max-per-route-connections: 200
+  ignored-services: 'sms-service'
+  routes:
+    sms-service: /smsApi/**
+    users:
+      path: /userApi/**
+      service-id: user-service
+    users2:
+      path: /userApi2/**
+      url: http://localhost:8002
+    sms2:
+      service-id: sms-service
+      path: /sms/**
+      stripPrefix: false
+    forward:
+      path: /forward/**
+      url: forward:/myZuul
+    service-by-ribbon: /service-by-ribbon/**
+  #设置zuul.prefix所有请求的访问都需要添加/api前缀
+  #prefix: /api
+  #strip-prefix: true
+
+
+########hystrix相关配置
+# 注意项：
+# 1、zuul环境下，信号量模式下并发量的大小，zuul.semaphore.maxSemaphores这种配置方式优先级最高
+# 2、zuul环境下，资源隔离策略默认信号量，zuul.ribbonIsolationStrategy这种配置方式优先级最高
+# 3、zuul环境下，commandGroup 固定为RibbonCommand
+# 4、zuul环境下，commandKey 对应每个服务的serviceId
+#
+hystrix:
+  command:
+    # 这是默认的配置
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            # 命令执行超时时间
+            timeoutInMilliseconds: 2000
+
+
+ribbon:
+  # 配置ribbon默认的超时时间
+  ConnectTimeout: 1000
+  ReadTimeout: 2000
+  # 是否开启重试
+  OkToRetryOnAllOperations: true
+  # 重试期间，实例切换次数
+  MaxAutoRetriesNextServer: 1
+  # 当前实例重试次数
+  MaxAutoRetries: 0
+#  eureka:
+#    enabled: false
+
+# 定义一个针对service-by-ribbon服务的负载均衡器，服务实例信息来自配置文件,zuul默认可以集成
+# 服务名
+service-by-ribbon:
+  # 服务实例列表
+  listOfServers: http://localhost:8001
+  ribbon:
+    # 负载策略
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # 设置它的服务实例信息来自配置文件, 如果不设置NIWSServerListClassName就会去euereka里面找
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
