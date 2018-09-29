@@ -87,3 +87,10 @@ service-by-ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
     # 设置它的服务实例信息来自配置文件, 如果不设置NIWSServerListClassName就会去euereka里面找
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+
+
+zuul-filter:
+  token-filter:
+    un-auth-routes:
+      - sms-service
+    static-token: xF2fdi8M

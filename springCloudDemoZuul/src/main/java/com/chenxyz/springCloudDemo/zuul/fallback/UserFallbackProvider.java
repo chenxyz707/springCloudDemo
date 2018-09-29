@@ -27,7 +27,8 @@ public class UserFallbackProvider implements ZuulFallbackProvider {
      */
     @Override
     public String getRoute() {
-        return "*";
+        // 如果要成为全局降级策略，返回null或者*
+        return "user-service";
     }
 
     @Override
@@ -61,7 +62,7 @@ public class UserFallbackProvider implements ZuulFallbackProvider {
             @Override
             public HttpHeaders getHeaders() {
                 HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setContentType(MediaType.TEXT_PLAIN);
                 return headers;
             }
         };
