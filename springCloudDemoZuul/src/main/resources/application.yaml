@@ -42,6 +42,16 @@ zuul:
   #设置zuul.prefix所有请求的访问都需要添加/api前缀
   #prefix: /api
   #strip-prefix: true
+  # 禁用SpringCloud自带的error filter
+  SendErrorFilter:
+    error:
+      disable: true
+  TokenValidateFilter:
+    pre:
+      disable: false
+  SendErrorRestFilter:
+    error:
+      disable: true
 
 
 ########hystrix相关配置
@@ -93,4 +103,5 @@ zuul-filter:
   token-filter:
     un-auth-routes:
       - sms-service
+      - users
     static-token: xF2fdi8M

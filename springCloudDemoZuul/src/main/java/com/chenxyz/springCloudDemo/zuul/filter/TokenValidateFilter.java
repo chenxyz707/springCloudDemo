@@ -53,15 +53,17 @@ public class TokenValidateFilter extends ZuulFilter {
 
         String token = request.getHeader("Authorization");
         if (token == null) {
+            logger.warn("Http Header Authorization is null");
             forbidden();
             return null;
         }
 
         String staticToken = tvConfig.getStaticToken();
         if (StringUtils.isBlank(staticToken)) {
-            logger.error("zuulFilter.tokenFilter.staticToken was not set");
+            logger.warn("property zuulFilter.tokenFilter.staticToken was not set");
             forbidden();
         } else if (!staticToken.equals(token)) {
+            logger.warn("token is not valid");
             forbidden();
         }
         return null;

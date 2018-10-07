@@ -17,6 +17,6 @@ public class MyZuulController {
 
     @RequestMapping("/test")
     public String test() {
-        return "Hello, you a locally endpoint!";
+        return "Hello, you are visiting a local endpoint!";
     }
 }
