@@ -6,6 +6,7 @@ import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 /**
@@ -50,8 +51,8 @@ public class SendErrorRestFilter extends ZuulFilter {
 
         // 设置response
         context.setResponseBody(info.toJSONString());
-        context.getResponse().setContentType("text/html;charset=UTF-8");
-
+        context.getResponse().setContentType("application/json;charset=UTF-8");
+        context.getResponse().setStatus(HttpStatus.OK.value());
         // 处理了异常之后清空异常
         context.remove("throwable");
         return null;

@@ -42,13 +42,13 @@ zuul:
   #设置zuul.prefix所有请求的访问都需要添加/api前缀
   #prefix: /api
   #strip-prefix: true
-  # 禁用SpringCloud自带的error filter
+  # 设置为true时禁用SpringCloud自带的error filter
   SendErrorFilter:
     error:
-      disable: true
+      disable: false
   TokenValidateFilter:
     pre:
-      disable: false
+      disable: true
   SendErrorRestFilter:
     error:
       disable: true
@@ -101,7 +101,9 @@ service-by-ribbon:
 
 zuul-filter:
   token-filter:
+    # 访问时，需要进行认证的路由key
     un-auth-routes:
-      - sms-service
       - users
+      - smsApi
+    # 固定的token
     static-token: xF2fdi8M

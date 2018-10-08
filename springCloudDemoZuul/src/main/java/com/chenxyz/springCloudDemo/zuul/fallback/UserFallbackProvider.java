@@ -27,8 +27,8 @@ public class UserFallbackProvider implements ZuulFallbackProvider {
      */
     @Override
     public String getRoute() {
-        // 如果要成为全局降级策略，返回null或者*
-        return "user-service";
+        // return "user-service";
+        return "*";
     }
 
     @Override
