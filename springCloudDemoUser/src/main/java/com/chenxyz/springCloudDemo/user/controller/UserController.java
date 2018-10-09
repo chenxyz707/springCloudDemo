@@ -2,14 +2,16 @@ package com.chenxyz.springCloudDemo.user.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.UUID;
 
 /**
@@ -54,9 +56,6 @@ public class UserController {
         try (InputStream in = file.getInputStream(); OutputStream out = new FileOutputStream(dstFile)) {
             StreamUtils.copy(in, out);
         }
-
         return dstName;
-
-
     }
 }

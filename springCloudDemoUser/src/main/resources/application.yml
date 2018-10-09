@@ -4,6 +4,10 @@ info:
 spring:
   profiles:
     active: dev
+  http:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 2048MB
 
 #eureka配置
 eureka:

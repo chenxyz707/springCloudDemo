@@ -9,6 +9,10 @@ management:
 spring:
   profiles:
     active: dev
+  http:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 2048MB
   rabbitmq:
       host: 172.16.4.39
       username: rabbitmq
