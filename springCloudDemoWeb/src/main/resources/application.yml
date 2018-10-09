@@ -22,7 +22,15 @@ spring:
         # 开启重试
         retry:
           enabled: true
-
+  #zipkin和sleuth设置
+  zipkin:
+    base-url: http://localhost:8400
+    locator:
+      discovery:
+        enabled: false
+  sleuth:
+    sampler:
+      percentage: 1.0
 # 关闭熔断机制
 feign:
   hystrix:

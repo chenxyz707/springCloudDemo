@@ -25,6 +25,7 @@
     <module>springCloudDemoWeb</module>
     <module>springCloudDemoDashboard</module>
     <module>springCloudDemoZuul</module>
+    <module>springCloudDemoZipkin</module>
   </modules>
 
   <properties>
