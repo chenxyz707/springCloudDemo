@@ -2,8 +2,15 @@ package com.chenxyz.springCloudDemo.user.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.*;
+import java.util.UUID;
 
 /**
  * 用户接口
@@ -32,5 +39,24 @@ public class UserController {
             throw new RuntimeException("random exception");
         }
         return "success";
+    }
+
+    @RequestMapping("/uploadImg")
+    public String uploadImg(MultipartFile file) throws IOException {
+        String srcName = file.getOriginalFilename();
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        String dstName = "D:/springcloud/upload/" + uuid +"-" + srcName;
+        File dstFile = new File(dstName);
+        File parentFile = dstFile.getParentFile();
+        if (!parentFile.exists()) {
+            parentFile.mkdirs();
+        }
+        try (InputStream in = file.getInputStream(); OutputStream out = new FileOutputStream(dstFile)) {
+            StreamUtils.copy(in, out);
+        }
+
+        return dstName;
+
+
     }
 }
