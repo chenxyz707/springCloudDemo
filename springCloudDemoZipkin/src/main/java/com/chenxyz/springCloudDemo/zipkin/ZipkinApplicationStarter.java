@@ -2,6 +2,7 @@ package com.chenxyz.springCloudDemo.zipkin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import zipkin.server.EnableZipkinServer;
 
@@ -13,6 +14,7 @@ import zipkin.server.EnableZipkinServer;
  * @version 1.0
  * @date 2018-10-09
  */
+@EnableEurekaClient
 @EnableZipkinServer
 @SpringBootApplication
 public class ZipkinApplicationStarter {

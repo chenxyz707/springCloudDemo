@@ -19,4 +19,7 @@ public interface UserService {
 
     @RequestMapping(value = "/user/exception", method = RequestMethod.GET)
     public String exception();
+
+    @RequestMapping(value = "/user/register", method = RequestMethod.GET)
+    public String register();
 }

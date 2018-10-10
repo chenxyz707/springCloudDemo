@@ -27,4 +27,7 @@ public interface SMSService {
 
     @RequestMapping(value = "sms/{id}", method = RequestMethod.DELETE)
     String delete(@PathVariable("id") String id);
+
+    @RequestMapping(value = "sms/sendRgister", method = RequestMethod.GET)
+    String sendRgister();
 }

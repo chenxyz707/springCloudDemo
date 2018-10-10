@@ -8,7 +8,14 @@ spring:
     multipart:
       max-file-size: 1024MB
       max-request-size: 2048MB
-
+  zipkin:
+    locator:
+      discovery:
+        enabled: false
+    base-url: http://localhost:8400
+  sleuth:
+    sampler:
+      percentage: 1.0
 #eureka配置
 eureka:
   client:

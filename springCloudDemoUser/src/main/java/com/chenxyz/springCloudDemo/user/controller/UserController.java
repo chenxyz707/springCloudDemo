@@ -58,4 +58,11 @@ public class UserController {
         }
         return dstName;
     }
+
+    @RequestMapping("/register")
+    public String register() throws InterruptedException {
+        LOGGER.info("invoke user register endpoint");
+        Thread.sleep(500);
+        return "success";
+    }
 }

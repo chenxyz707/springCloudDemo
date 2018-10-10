@@ -21,4 +21,9 @@ public class UserServiceFallback implements UserService {
     public String exception() {
         return "exception 降级";
     }
+
+    @Override
+    public String register() {
+        return "用户注册失败";
+    }
 }

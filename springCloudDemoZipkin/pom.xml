@@ -54,6 +54,12 @@
             <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
         </dependency>-->
 
+        <!--注册到Eureka，可以自动发现Zipkin服务-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+
         <!--使用Http方式获取链路信息-->
         <dependency>
             <groupId>io.zipkin.java</groupId>

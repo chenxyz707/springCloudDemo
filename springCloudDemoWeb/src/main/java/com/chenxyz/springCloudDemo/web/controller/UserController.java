@@ -1,9 +1,12 @@
 package com.chenxyz.springCloudDemo.web.controller;
 
-import com.chenxyz.springCloudDemo.web.command.UserExceptionCommand;
 import com.chenxyz.springCloudDemo.web.command.UserAnnotationCommand;
+import com.chenxyz.springCloudDemo.web.command.UserExceptionCommand;
 import com.chenxyz.springCloudDemo.web.command.UserTimeOutCommand;
+import com.chenxyz.springCloudDemo.web.service.sms.SMSService;
 import com.chenxyz.springCloudDemo.web.service.user.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +23,11 @@ public class UserController {
 
     @Autowired
     UserAnnotationCommand userAnnotationCommand;
+
+    @Autowired
+    SMSService smsService;
+
+    public static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping("/command/timeout")
     public String commandTimeout() {
@@ -50,4 +58,13 @@ public class UserController {
     public String feignException() {
         return userService.exception();
     }
+
+    @RequestMapping("/register")
+    public String register() {
+        logger.info("user is registering");
+        userService.register();
+        smsService.sendRgister();
+        return "success";
+    }
+
 }

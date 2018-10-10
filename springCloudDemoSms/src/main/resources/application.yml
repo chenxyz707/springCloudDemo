@@ -7,6 +7,18 @@ sms:
 spring:
   profiles:
     active: dev
+  rabbitmq:
+      host: 172.16.4.39
+      username: rabbitmq
+      password: rabbitmq
+  zipkin:
+    locator:
+      discovery:
+        enabled: true
+    #base-url: http://localhost:8400
+  sleuth:
+    sampler:
+      percentage: 1.0
 
 #eureka配置
 eureka:
