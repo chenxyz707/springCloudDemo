@@ -71,6 +71,20 @@
             <artifactId>zipkin-autoconfigure-ui</artifactId>
         </dependency>
 
+        <!--使用mysql存储Span信息-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-storage-mysql</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
