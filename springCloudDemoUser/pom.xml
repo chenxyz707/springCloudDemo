@@ -41,10 +41,25 @@
             <scope>test</scope>
         </dependency>
 
+        <!--sleuth+Logstash开始-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
+        <!--Logstash 日志采集器 收集后导入到Elasticsearch-->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>4.6</version>
+        </dependency>
+        <!--sleuth+Logstash结束-->
+
+        <!--sleuth集成zipkin开始-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>
+        <!--sleuth集成zipkin开始-->
     </dependencies>
 
     <build>
