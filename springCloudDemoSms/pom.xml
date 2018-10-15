@@ -70,10 +70,10 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!--sleuth+Logstash开始-->
         <dependency>
@@ -88,12 +88,27 @@
         </dependency>
         <!--sleuth+Logstash结束-->
 
-        <!--sleuth集成zipkin开始-->
-        <dependency>
+        <!--sleuth集成zipkin，Http传输方式 开始-->
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>-->
+        <!--sleuth集成zipkin，Http传输方式 开始-->
+
+        <!--使用spring cloud stream上报sleuth信息到zipkin  开始-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-stream</artifactId>
         </dependency>
-        <!--sleuth集成zipkin开始-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+        </dependency>
+        <!--使用spring cloud stream上报sleuth信息到zipkin  结束-->
     </dependencies>
 
     <build>

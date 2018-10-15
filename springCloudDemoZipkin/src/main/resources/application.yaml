@@ -4,14 +4,13 @@ info:
 server:
   port: 8400
 
-#不设置为false，就不能调用/routes获取路由表
 management:
   security:
     enabled: false
 
 spring:
   datasource:
-    schema: classpath:ysql.sql
+    schema: classpath:mysql.sql
     # zipkin-autoconfigure-storage-mysql包中默认包含了HikariDataSource
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://localhost:3306/test
@@ -20,6 +19,10 @@ spring:
     # Switch this on to create the schema on startup:
     initialize: true
     continueOnError: true
+  rabbitmq:
+    host: 172.16.4.39
+    username: rabbitmq
+    password: rabbitmq
 
 # 设置存储类型为mysql
 zipkin:
