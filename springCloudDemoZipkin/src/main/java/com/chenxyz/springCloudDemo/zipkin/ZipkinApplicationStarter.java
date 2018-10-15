@@ -3,7 +3,7 @@ package com.chenxyz.springCloudDemo.zipkin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
+import zipkin.server.EnableZipkinServer;
 
 /**
  * zipkin服务端
@@ -14,8 +14,8 @@ import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
  * @date 2018-10-09
  */
 @EnableEurekaClient
-//@EnableZipkinServer
-@EnableZipkinStreamServer
+@EnableZipkinServer  //Http方式传输sleuth信息
+//@EnableZipkinStreamServer  //Stream方式传输Sleuth信息
 @SpringBootApplication
 public class ZipkinApplicationStarter {
 

@@ -9,25 +9,27 @@ management:
     enabled: false
 
 spring:
-  datasource:
-    schema: classpath:mysql.sql
-    # zipkin-autoconfigure-storage-mysql包中默认包含了HikariDataSource
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/test
-    username: chenxyz
-    password: 123
-    # Switch this on to create the schema on startup:
-    initialize: true
-    continueOnError: true
+#  # 将链路信息持久化到mysql
+#  datasource:
+#    schema: classpath:mysql.sql
+#    # zipkin-autoconfigure-storage-mysql包中默认包含了HikariDataSource
+#    type: com.zaxxer.hikari.HikariDataSource
+#    url: jdbc:mysql://localhost:3306/test
+#    username: chenxyz
+#    password: 123
+#    # Switch this on to create the schema on startup:
+#    initialize: true
+#    continueOnError: true
+  # 通过rabbitmq传输消息
   rabbitmq:
     host: 172.16.4.39
     username: rabbitmq
     password: rabbitmq
 
 # 设置存储类型为mysql
-zipkin:
-  storage:
-    type: mysql
+#zipkin:
+#  storage:
+#    type: mysql
 
 #eureka配置
 eureka:

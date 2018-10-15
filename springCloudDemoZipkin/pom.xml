@@ -40,7 +40,7 @@
         <!--使用Http方式获取链路信息 结束-->
 
         <!--使用mysql存储Span信息 开始-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
@@ -51,11 +51,11 @@
         <dependency>
             <groupId>io.zipkin.java</groupId>
             <artifactId>zipkin-autoconfigure-storage-mysql</artifactId>
-        </dependency>
+        </dependency>-->
         <!--使用mysql存储Span信息 结束-->
 
         <!--使用Spring Cloud Stream方式接收Sleuth信息 开始-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin-stream</artifactId>
         </dependency>
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
-        </dependency>
+        </dependency>-->
         <!--使用Spring Cloud Stream方式接收Sleuth信息 结束-->
     </dependencies>
 

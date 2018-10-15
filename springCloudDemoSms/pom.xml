@@ -89,14 +89,14 @@
         <!--sleuth+Logstash结束-->
 
         <!--sleuth集成zipkin，Http传输方式 开始-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-        </dependency>-->
+        </dependency>
         <!--sleuth集成zipkin，Http传输方式 开始-->
 
         <!--使用spring cloud stream上报sleuth信息到zipkin  开始-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-stream</artifactId>
         </dependency>
@@ -107,7 +107,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
-        </dependency>
+        </dependency>-->
         <!--使用spring cloud stream上报sleuth信息到zipkin  结束-->
     </dependencies>
 
