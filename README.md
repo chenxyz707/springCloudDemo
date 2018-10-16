@@ -1,4 +1,13 @@
 # springCloudDemo
+## 博客地址
+- [SpringCloud(一)使用Eureka实现服务注册与发现](https://blog.csdn.net/chenxyz707/article/details/80395790)
+- [SpringCloud(二)配置中心](https://blog.csdn.net/chenxyz707/article/details/80467447)
+- [SpringCloud(三)声明式Web服务客户端Feign](https://blog.csdn.net/chenxyz707/article/details/80508612)
+- [SpringCloud(四)客户端负载均衡Ribbon](https://blog.csdn.net/chenxyz707/article/details/80548084)
+- [SpringCloud(五)SpringCloud的限流、熔断和降级——Hystrix](https://blog.csdn.net/chenxyz707/article/details/80913725)
+- [SpringCloud(六)Hystrix仪表盘Dashboard](https://blog.csdn.net/chenxyz707/article/details/81567647)
+- [SpringCloud(七)路由网关Zuul](https://blog.csdn.net/chenxyz707/article/details/82854142)
+- [SpringCloud(八)链路追踪Sleuth](https://blog.csdn.net/chenxyz707/article/details/82999783)
 
 ## Eureka
 Eureka的高可用需要修改host文件添加一行
