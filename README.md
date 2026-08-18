@@ -1,3 +1,5 @@
+
+
 # springCloudDemo
 ## 博客地址
 - [SpringCloud(一)使用Eureka实现服务注册与发现](https://blog.csdn.net/chenxyz707/article/details/80395790)
@@ -12,6 +14,7 @@
 ## Eureka
 Eureka的高可用需要修改host文件添加一行
 `127.0.0.1  eureka1 eureka2 eureka3`
+分别使用`eureka1`、`eureka2`、`eureka3` Profile启动三个Eureka服务。
 
 ## 配置中心
 ### 配置中心仓库
@@ -41,5 +44,3 @@ docker run -d -p 1443:443 -p 10800:80 --name gitlab --restart always gitlab/gitl
 `config.properties`和`application.yml`中的Hystrix的配置项共同生效，且`application.yml`优先级高。
 
 ## 其他
-
-
